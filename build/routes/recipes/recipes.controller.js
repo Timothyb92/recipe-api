@@ -13,7 +13,8 @@ exports.httpGetAllRecipes = void 0;
 const recipes_model_1 = require("../../models/recipes.model");
 function httpGetAllRecipes(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        return yield res.status(200).json((0, recipes_model_1.getAllRecipes)());
+        const recipes = yield (0, recipes_model_1.getAllRecipes)();
+        return res.status(200).json(recipes);
     });
 }
 exports.httpGetAllRecipes = httpGetAllRecipes;
