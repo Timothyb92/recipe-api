@@ -9,10 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllRecipes = void 0;
-const recipes_1 = require("../utils/recipes");
-const getAllRecipes = () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log('Returning recipes');
-    return yield recipes_1.recipes;
-});
-exports.getAllRecipes = getAllRecipes;
+exports.httpGetAllRecipes = void 0;
+const recipes_model_1 = require("../../models/recipes.model");
+function httpGetAllRecipes(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return yield res.status(200).json((0, recipes_model_1.getAllRecipes)());
+    });
+}
+exports.httpGetAllRecipes = httpGetAllRecipes;
