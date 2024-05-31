@@ -8,3 +8,4 @@ const express_1 = __importDefault(require("express"));
 const recipes_controller_1 = require("./recipes.controller");
 exports.recipesRouter = express_1.default.Router();
 exports.recipesRouter.get('/', recipes_controller_1.httpGetAllRecipes);
+exports.recipesRouter.get('/:recipeId', recipes_controller_1.httpGetOneRecipe);

@@ -1,7 +1,11 @@
 import express from 'express';
 
-import { httpGetAllRecipes } from './recipes.controller';
+import {
+  httpGetAllRecipes,
+  httpGetOneRecipe
+} from './recipes.controller';
 
 export const recipesRouter = express.Router();
 
 recipesRouter.get('/', httpGetAllRecipes);
+recipesRouter.get('/:recipeId', httpGetOneRecipe);
