@@ -5,7 +5,5 @@ export const getAllRecipes = async (): Promise<Recipe[]> => {
 };
 
 export const getOneRecipe = async (recipeId: number): Promise<Recipe> => {
-  console.log(`recipeId: ${recipeId}`);
-  console.log(`Recipe being returned: ${recipes[recipeId]}`);
   return recipes[recipeId]
 }

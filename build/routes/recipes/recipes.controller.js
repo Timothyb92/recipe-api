@@ -20,7 +20,7 @@ function httpGetAllRecipes(req, res) {
 exports.httpGetAllRecipes = httpGetAllRecipes;
 function httpGetOneRecipe(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const recipeId = +req.params.recipeId;
+        const recipeId = +req.params.id;
         const recipe = yield (0, recipes_model_1.getOneRecipe)(recipeId);
         return res.status(200).json(recipe);
     });

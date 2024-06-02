@@ -16,8 +16,6 @@ const getAllRecipes = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.getAllRecipes = getAllRecipes;
 const getOneRecipe = (recipeId) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(`recipeId: ${recipeId}`);
-    console.log(`Recipe being returned: ${recipes_1.recipes[recipeId]}`);
     return recipes_1.recipes[recipeId];
 });
 exports.getOneRecipe = getOneRecipe;

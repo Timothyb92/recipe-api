@@ -8,4 +8,4 @@ import {
 export const recipesRouter = express.Router();
 
 recipesRouter.get('/', httpGetAllRecipes);
-recipesRouter.get('/:recipeId', httpGetOneRecipe);
+recipesRouter.get('/:id', httpGetOneRecipe);
