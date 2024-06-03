@@ -12,17 +12,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const http_1 = __importDefault(require("http"));
-const app_1 = __importDefault(require("./app"));
-const mongo_1 = require("./services/mongo");
-const server = http_1.default.createServer(app_1.default);
-const PORT = 3000;
-function startServer() {
+exports.mongoConnect = exports.mongoDisconnect = void 0;
+const mongoose_1 = __importDefault(require("mongoose"));
+const MONGO_URL = 'mongodb+srv://nasa-api:L5BstBzHyM02q2xc@nasacluster.d8uyum0.mongodb.net/nasa?retryWrites=true&w=majority';
+mongoose_1.default.connection.once('open', () => __awaiter(void 0, void 0, void 0, function* () {
+    yield console.log('MongoDB connection ready!');
+}));
+mongoose_1.default.connection.on('error', (err) => {
+    console.error(err);
+});
+function mongoDisconnect() {
     return __awaiter(this, void 0, void 0, function* () {
-        yield (0, mongo_1.mongoConnect)();
-        server.listen(PORT, () => {
-            console.log(`index.ts listening on port ${PORT}`);
-        });
+        mongoose_1.default.disconnect();
     });
 }
-startServer();
+exports.mongoDisconnect = mongoDisconnect;
+const mongoConnect = async => {
+    console.log('mongoConnect running');
+    mongoose_1.default.connect(MONGO_URL);
+};
+exports.mongoConnect = mongoConnect;
