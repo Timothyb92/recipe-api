@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const MONGO_URL =  'mongodb+srv://nasa-api:L5BstBzHyM02q2xc@nasacluster.d8uyum0.mongodb.net/nasa?retryWrites=true&w=majority'
+const MONGO_URL =  'mongodb+srv://nasa-api:L5BstBzHyM02q2xc@nasacluster.d8uyum0.mongodb.net/recipe?retryWrites=true&w=majority'
 
 
 mongoose.connection.once('open', async () => {

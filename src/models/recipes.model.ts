@@ -1,4 +1,5 @@
 import { recipes, Recipe } from '../utils/recipes';
+import { MongoRecipe } from './recipes.mongo';
 
 export const getAllRecipes = async (): Promise<Recipe[]> => {
   return recipes;
@@ -12,4 +13,9 @@ export const addRecipe = async (recipe: Recipe): Promise<Recipe[]> => {
   recipes.push(recipe);
   console.log(`Added recipe ${recipe.recipeName}`)
   return recipes;
+}
+
+export const addMongoRecipe = async (recipe: Recipe): Promise<void> => {
+  const newRecipe = new MongoRecipe({...recipe});
+  await newRecipe.save();
 }

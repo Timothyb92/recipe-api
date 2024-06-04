@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.mongoConnect = exports.mongoDisconnect = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
-const MONGO_URL = 'mongodb+srv://nasa-api:L5BstBzHyM02q2xc@nasacluster.d8uyum0.mongodb.net/nasa?retryWrites=true&w=majority';
+const MONGO_URL = 'mongodb+srv://nasa-api:L5BstBzHyM02q2xc@nasacluster.d8uyum0.mongodb.net/recipe?retryWrites=true&w=majority';
 mongoose_1.default.connection.once('open', () => __awaiter(void 0, void 0, void 0, function* () {
     yield console.log('MongoDB connection ready!');
 }));

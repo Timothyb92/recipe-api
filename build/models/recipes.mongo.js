@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.recipes = exports.recipeSchema = void 0;
+exports.MongoRecipe = exports.recipeSchema = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 exports.recipeSchema = new mongoose_1.default.Schema({
     recipeName: {
@@ -62,4 +62,4 @@ exports.recipeSchema = new mongoose_1.default.Schema({
         required: true
     }
 });
-exports.recipes = mongoose_1.default.model('Recipe', exports.recipeSchema);
+exports.MongoRecipe = mongoose_1.default.model('Recipe', exports.recipeSchema);
