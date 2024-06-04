@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.httpGetOneRecipe = exports.httpGetAllRecipes = void 0;
+exports.httpAddRecipe = exports.httpGetOneRecipe = exports.httpGetAllRecipes = void 0;
 const recipes_model_1 = require("../../models/recipes.model");
 function httpGetAllRecipes(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -26,3 +26,12 @@ function httpGetOneRecipe(req, res) {
     });
 }
 exports.httpGetOneRecipe = httpGetOneRecipe;
+function httpAddRecipe(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const recipe = req.body;
+        console.log(`Recipe: ${recipe.recipeName}`);
+        yield (0, recipes_model_1.addRecipe)(recipe);
+        return res.status(201).json(recipe);
+    });
+}
+exports.httpAddRecipe = httpAddRecipe;

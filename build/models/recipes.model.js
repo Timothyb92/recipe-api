@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getOneRecipe = exports.getAllRecipes = void 0;
+exports.addRecipe = exports.getOneRecipe = exports.getAllRecipes = void 0;
 const recipes_1 = require("../utils/recipes");
 const getAllRecipes = () => __awaiter(void 0, void 0, void 0, function* () {
     return recipes_1.recipes;
@@ -19,3 +19,9 @@ const getOneRecipe = (recipeId) => __awaiter(void 0, void 0, void 0, function* (
     return recipes_1.recipes[recipeId];
 });
 exports.getOneRecipe = getOneRecipe;
+const addRecipe = (recipe) => __awaiter(void 0, void 0, void 0, function* () {
+    recipes_1.recipes.push(recipe);
+    console.log(`Added recipe ${recipe.recipeName}`);
+    return recipes_1.recipes;
+});
+exports.addRecipe = addRecipe;

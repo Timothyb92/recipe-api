@@ -9,3 +9,4 @@ const recipes_controller_1 = require("./recipes.controller");
 exports.recipesRouter = express_1.default.Router();
 exports.recipesRouter.get('/', recipes_controller_1.httpGetAllRecipes);
 exports.recipesRouter.get('/:id', recipes_controller_1.httpGetOneRecipe);
+exports.recipesRouter.post('/', recipes_controller_1.httpAddRecipe);
