@@ -27,8 +27,10 @@ function mongoDisconnect() {
     });
 }
 exports.mongoDisconnect = mongoDisconnect;
-const mongoConnect = async => {
-    console.log('mongoConnect running');
-    mongoose_1.default.connect(MONGO_URL);
-};
+function mongoConnect() {
+    return __awaiter(this, void 0, void 0, function* () {
+        console.log('mongoConnect running');
+        mongoose_1.default.connect(MONGO_URL);
+    });
+}
 exports.mongoConnect = mongoConnect;

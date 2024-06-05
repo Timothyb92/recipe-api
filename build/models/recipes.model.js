@@ -9,9 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addMongoRecipe = exports.addRecipe = exports.getOneRecipe = exports.getAllRecipes = void 0;
+exports.addMongoRecipe = exports.addRecipe = exports.getOneRecipe = exports.getAllRecipes = exports.loadRecipes = void 0;
 const recipes_1 = require("../utils/recipes");
 const recipes_mongo_1 = require("./recipes.mongo");
+const loadRecipes = () => __awaiter(void 0, void 0, void 0, function* () {
+    recipes_1.recipes.forEach((recipe) => {
+        (0, exports.addMongoRecipe)(recipe);
+    });
+});
+exports.loadRecipes = loadRecipes;
 const getAllRecipes = () => __awaiter(void 0, void 0, void 0, function* () {
     return recipes_1.recipes;
 });
@@ -27,7 +33,7 @@ const addRecipe = (recipe) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.addRecipe = addRecipe;
 const addMongoRecipe = (recipe) => __awaiter(void 0, void 0, void 0, function* () {
-    const newRecipe = new recipes_mongo_1.MongoRecipe(Object.assign({}, recipe));
+    const newRecipe = new recipes_mongo_1.recipeDB(Object.assign({}, recipe));
     yield newRecipe.save();
 });
 exports.addMongoRecipe = addMongoRecipe;

@@ -15,7 +15,7 @@ export async function mongoDisconnect() {
   mongoose.disconnect()
 }
 
-export const mongoConnect = async => {
-  console.log('mongoConnect running')
-  mongoose.connect(MONGO_URL)
+export async function mongoConnect() {
+  console.log('mongoConnect running');
+  mongoose.connect(MONGO_URL);
 }
