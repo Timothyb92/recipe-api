@@ -22,6 +22,11 @@ export const addRecipe = async (recipe: Recipe): Promise<Recipe[]> => {
 }
 
 export const addMongoRecipe = async (recipe: Recipe): Promise<void> => {
-  const newRecipe = new recipeDB({...recipe});
-  await newRecipe.save();
+  //const newRecipe = new recipeDB({...recipe});
+  //await newRecipe.save();
+  await recipeDB.updateOne(
+    {...recipe},
+    {...recipe},
+    {upsert: true}
+  );
 }

@@ -33,7 +33,8 @@ const addRecipe = (recipe) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.addRecipe = addRecipe;
 const addMongoRecipe = (recipe) => __awaiter(void 0, void 0, void 0, function* () {
-    const newRecipe = new recipes_mongo_1.recipeDB(Object.assign({}, recipe));
-    yield newRecipe.save();
+    //const newRecipe = new recipeDB({...recipe});
+    //await newRecipe.save();
+    yield recipes_mongo_1.recipeDB.updateOne(Object.assign({}, recipe), Object.assign({}, recipe), { upsert: true });
 });
 exports.addMongoRecipe = addMongoRecipe;
