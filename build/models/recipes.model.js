@@ -18,8 +18,11 @@ const loadRecipes = () => __awaiter(void 0, void 0, void 0, function* () {
     });
 });
 exports.loadRecipes = loadRecipes;
+//export const getAllRecipes = async (): Promise<Recipe[]> => {
+//  return recipes;
+//};
 const getAllRecipes = () => __awaiter(void 0, void 0, void 0, function* () {
-    return recipes_1.recipes;
+    return yield recipes_mongo_1.recipeDB.find({});
 });
 exports.getAllRecipes = getAllRecipes;
 const getOneRecipe = (recipeId) => __awaiter(void 0, void 0, void 0, function* () {

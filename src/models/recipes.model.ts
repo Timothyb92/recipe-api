@@ -7,9 +7,13 @@ export const loadRecipes = async (): Promise<void> => {
   })
 }
 
+//export const getAllRecipes = async (): Promise<Recipe[]> => {
+//  return recipes;
+//};
+
 export const getAllRecipes = async (): Promise<Recipe[]> => {
-  return recipes;
-};
+  return await recipeDB.find({});
+}
 
 export const getOneRecipe = async (recipeId: number): Promise<Recipe> => {
   return recipes[recipeId]
