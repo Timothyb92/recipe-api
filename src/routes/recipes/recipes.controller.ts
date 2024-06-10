@@ -5,7 +5,6 @@ import {
   getAllRecipes,
   getOneRecipe,
   addRecipe,
-  addMongoRecipe,
 } from '../../models/recipes.model';
 
 export async function httpGetAllRecipes(
@@ -20,7 +19,8 @@ export async function httpGetOneRecipe(
   req: Request,
   res: Response
 ): Promise<Response> {
-  const recipeId = +req.params.id;
+  const recipeId = req.params.id;
+  console.log(recipeId);
   const recipe = await getOneRecipe(recipeId);
   return res.status(200).json(recipe);
 }
@@ -31,18 +31,6 @@ export async function httpAddRecipe(
 ): Promise<Response> {
   const recipe: Recipe = req.body;
 
-  console.log(`Recipe: ${recipe.recipeName}`);
   await addRecipe(recipe);
-  return res.status(201).json(recipe)
-}
-
-export async function httpAddMongorecipe(
-  req: Request,
-  res: Response
-): Promise<Response> {
-  const recipe: Recipe = req.body;
-
-  console.log(`Recipe: ${recipe.recipeName}`);
-  await addMongoRecipe(recipe);
   return res.status(201).json(recipe)
 }

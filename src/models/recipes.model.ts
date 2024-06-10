@@ -3,31 +3,21 @@ import { recipeDB } from './recipes.mongo';
 
 export const loadRecipes = async (): Promise<void> => {
   recipes.forEach((recipe): void => {
-    addMongoRecipe(recipe);
+    addRecipe(recipe);
   })
 }
-
-//export const getAllRecipes = async (): Promise<Recipe[]> => {
-//  return recipes;
-//};
 
 export const getAllRecipes = async (): Promise<Recipe[]> => {
   return await recipeDB.find({});
 }
 
-export const getOneRecipe = async (recipeId: number): Promise<Recipe> => {
-  return recipes[recipeId]
+export const getOneRecipe = async (recipeId: string): Promise<Recipe | null> => {
+  return await recipeDB.findOne({
+    _id: recipeId
+  })
 }
 
-export const addRecipe = async (recipe: Recipe): Promise<Recipe[]> => {
-  recipes.push(recipe);
-  console.log(`Added recipe ${recipe.recipeName}`)
-  return recipes;
-}
-
-export const addMongoRecipe = async (recipe: Recipe): Promise<void> => {
-  //const newRecipe = new recipeDB({...recipe});
-  //await newRecipe.save();
+export const addRecipe = async (recipe: Recipe): Promise<void> => {
   await recipeDB.updateOne(
     {...recipe},
     {...recipe},

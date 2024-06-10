@@ -1,4 +1,4 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose, { Types } from "mongoose";
 
 export const recipeSchema = new mongoose.Schema({ 
   recipeName:
@@ -69,6 +69,10 @@ export const recipeSchema = new mongoose.Schema({
   vegetarian: {
     type: Boolean,
     required: true
+  },
+  _id: {
+    type: Types.ObjectId,
+    required: false
   }
 })
 
