@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addRecipe = exports.getOneRecipe = exports.getAllRecipes = exports.loadRecipes = void 0;
+exports.deleteRecipe = exports.deleteRecipeById = exports.addRecipe = exports.getOneRecipe = exports.getAllRecipes = exports.loadRecipes = void 0;
 const recipes_1 = require("../utils/recipes");
 const recipes_mongo_1 = require("./recipes.mongo");
 const loadRecipes = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -32,3 +32,13 @@ const addRecipe = (recipe) => __awaiter(void 0, void 0, void 0, function* () {
     yield recipes_mongo_1.recipeDB.updateOne(Object.assign({}, recipe), Object.assign({}, recipe), { upsert: true });
 });
 exports.addRecipe = addRecipe;
+const deleteRecipeById = (recipeId) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield recipes_mongo_1.recipeDB.findByIdAndDelete({
+        _id: recipeId
+    });
+});
+exports.deleteRecipeById = deleteRecipeById;
+const deleteRecipe = (recipeId) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield recipes_mongo_1.recipeDB.deleteOne({ _id: recipeId });
+});
+exports.deleteRecipe = deleteRecipe;

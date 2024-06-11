@@ -24,3 +24,13 @@ export const addRecipe = async (recipe: Recipe): Promise<void> => {
     {upsert: true}
   );
 }
+
+export const deleteRecipeById = async (recipeId: string): Promise<Recipe | null> => {
+  return await recipeDB.findByIdAndDelete({
+    _id: recipeId
+  })
+}
+
+export const deleteRecipe = async (recipeId: string): Promise<{deletedCount: number}> => {
+  return await recipeDB.deleteOne({_id: recipeId})
+}

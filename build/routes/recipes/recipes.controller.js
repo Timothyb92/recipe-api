@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.httpAddRecipe = exports.httpGetOneRecipe = exports.httpGetAllRecipes = void 0;
+exports.httpDeleteRecipeById = exports.httpAddRecipe = exports.httpGetOneRecipe = exports.httpGetAllRecipes = void 0;
 const recipes_model_1 = require("../../models/recipes.model");
 function httpGetAllRecipes(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -35,3 +35,11 @@ function httpAddRecipe(req, res) {
     });
 }
 exports.httpAddRecipe = httpAddRecipe;
+function httpDeleteRecipeById(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const recipeId = req.params.id;
+        const recipe = yield (0, recipes_model_1.deleteRecipeById)(recipeId);
+        return res.status(200).json(recipe);
+    });
+}
+exports.httpDeleteRecipeById = httpDeleteRecipeById;
