@@ -6,7 +6,7 @@ import {
   getOneRecipe,
   addRecipe,
   deleteRecipeById,
-  deleteRecipe,
+  updateRecipe,
 } from '../../models/recipes.model';
 
 export async function httpGetAllRecipes(
@@ -44,4 +44,15 @@ export async function httpDeleteRecipeById(
   const recipeId = req.params.id
   const recipe = await deleteRecipeById(recipeId)
   return res.status(200).json(recipe)
+}
+
+export async function httpUpdateRecipe(
+  req: Request,
+  res: Response
+): Promise<Response> {
+  const recipeId = req.params.id;
+  const keyToUpdate = req.body.key;
+  const updatedValue = req.body.value;
+  const updatedRecipe = await updateRecipe(recipeId, keyToUpdate, updatedValue);
+  return res.status(200).json(updatedRecipe);
 }

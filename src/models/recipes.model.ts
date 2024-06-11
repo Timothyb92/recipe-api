@@ -31,6 +31,6 @@ export const deleteRecipeById = async (recipeId: string): Promise<Recipe | null>
   })
 }
 
-export const deleteRecipe = async (recipeId: string): Promise<{deletedCount: number}> => {
-  return await recipeDB.deleteOne({_id: recipeId})
+export const updateRecipe = async (recipeId: string, recipeField: string, updatedInfo: any /*Need to update type of updatedInfo*/): Promise<Recipe | null> => {
+  return await recipeDB.findByIdAndUpdate({_id: recipeId}, { [recipeField]: updatedInfo })
 }

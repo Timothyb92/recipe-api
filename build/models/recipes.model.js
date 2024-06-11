@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteRecipe = exports.deleteRecipeById = exports.addRecipe = exports.getOneRecipe = exports.getAllRecipes = exports.loadRecipes = void 0;
+exports.updateRecipe = exports.deleteRecipeById = exports.addRecipe = exports.getOneRecipe = exports.getAllRecipes = exports.loadRecipes = void 0;
 const recipes_1 = require("../utils/recipes");
 const recipes_mongo_1 = require("./recipes.mongo");
 const loadRecipes = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -38,7 +38,7 @@ const deleteRecipeById = (recipeId) => __awaiter(void 0, void 0, void 0, functio
     });
 });
 exports.deleteRecipeById = deleteRecipeById;
-const deleteRecipe = (recipeId) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield recipes_mongo_1.recipeDB.deleteOne({ _id: recipeId });
+const updateRecipe = (recipeId, recipeField, updatedInfo /*Need to update type of updatedInfo*/) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield recipes_mongo_1.recipeDB.findByIdAndUpdate({ _id: recipeId }, { [recipeField]: updatedInfo });
 });
-exports.deleteRecipe = deleteRecipe;
+exports.updateRecipe = updateRecipe;

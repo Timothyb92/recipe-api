@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.httpDeleteRecipeById = exports.httpAddRecipe = exports.httpGetOneRecipe = exports.httpGetAllRecipes = void 0;
+exports.httpUpdateRecipe = exports.httpDeleteRecipeById = exports.httpAddRecipe = exports.httpGetOneRecipe = exports.httpGetAllRecipes = void 0;
 const recipes_model_1 = require("../../models/recipes.model");
 function httpGetAllRecipes(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -43,3 +43,13 @@ function httpDeleteRecipeById(req, res) {
     });
 }
 exports.httpDeleteRecipeById = httpDeleteRecipeById;
+function httpUpdateRecipe(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const recipeId = req.params.id;
+        const keyToUpdate = req.body.key;
+        const updatedValue = req.body.value;
+        const updatedRecipe = yield (0, recipes_model_1.updateRecipe)(recipeId, keyToUpdate, updatedValue);
+        return res.status(200).json(updatedRecipe);
+    });
+}
+exports.httpUpdateRecipe = httpUpdateRecipe;

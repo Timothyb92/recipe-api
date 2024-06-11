@@ -11,3 +11,4 @@ exports.recipesRouter.get('/', recipes_controller_1.httpGetAllRecipes);
 exports.recipesRouter.get('/:id', recipes_controller_1.httpGetOneRecipe);
 exports.recipesRouter.delete('/:id', recipes_controller_1.httpDeleteRecipeById);
 exports.recipesRouter.post('/', recipes_controller_1.httpAddRecipe);
+exports.recipesRouter.patch('/:id', recipes_controller_1.httpUpdateRecipe);
