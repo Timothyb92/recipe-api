@@ -13,13 +13,14 @@ export interface Recipe {
   imageURL: string;
   vegan: boolean;
   vegetarian: boolean;
-  _id?: string;
+  authorAccountId: number;
 }
 
 export const recipes: Recipe[] = [
   {
     recipeName: "Spaghetti Carbonara",
     author: "Giulia Scarpaleggia",
+    authorAccountId: 1,
     description:
       "A classic Italian pasta dish made with eggs, cheese, pancetta, and black pepper.",
     cuisine: "Italian",
@@ -50,6 +51,7 @@ export const recipes: Recipe[] = [
   {
     recipeName: "Vegetable Stir Fry",
     author: "Jennifer Smith",
+    authorAccountId: 2,
     description:
       "A quick and easy stir-fry recipe packed with colorful vegetables and flavorful sauce.",
     cuisine: "Asian",
@@ -86,6 +88,7 @@ export const recipes: Recipe[] = [
   {
     recipeName: "Mushroom Risotto",
     author: "Sophia Johnson",
+    authorAccountId: 3,
     description:
       "A creamy and comforting Italian rice dish made with Arborio rice, mushrooms, white wine, and Parmesan cheese.",
     cuisine: "Italian",
@@ -117,6 +120,88 @@ export const recipes: Recipe[] = [
     ],
     tags: ["risotto", "Italian", "mushrooms", "creamy", "comfort food"],
     imageURL: "https://example.com/mushroom_risotto.jpg",
+    vegan: false,
+    vegetarian: true,
+  },
+  {
+    recipeName: "Chicken Tikka Masala",
+    author: "Jennifer Smith",
+    authorAccountId: 2,
+    description:
+      "A popular Indian curry dish made with marinated chicken pieces cooked in a spiced tomato sauce.",
+    cuisine: "Indian",
+    difficulty: "Intermediate",
+    prepTime: "20 minutes",
+    cookTime: "30 minutes",
+    totalServings: 4,
+    ingredients: [
+      "500g boneless chicken thighs, cut into pieces",
+      "1 cup plain yogurt",
+      "2 tablespoons lemon juice",
+      "2 teaspoons ground cumin",
+      "2 teaspoons ground coriander",
+      "1 teaspoon ground turmeric",
+      "1 teaspoon ground paprika",
+      "1 teaspoon garam masala",
+      "2 tablespoons vegetable oil",
+      "1 large onion, chopped",
+      "2 cloves garlic, minced",
+      "1 tablespoon grated ginger",
+      "400g can of diced tomatoes",
+      "1 cup heavy cream",
+      "Salt to taste",
+      "Fresh cilantro for garnish (optional)",
+      "Cooked basmati rice for serving",
+    ],
+    instructions: [
+      "In a large bowl, combine yogurt, lemon juice, ground cumin, ground coriander, ground turmeric, ground paprika, and garam masala. Add chicken pieces and coat well. Marinate for at least 1 hour or overnight.",
+      "Heat oil in a large skillet over medium heat. Add chopped onion, garlic, and grated ginger. Sauté until onion is golden brown.",
+      "Add marinated chicken pieces to the skillet and cook until the chicken is no longer pink, about 8-10 minutes.",
+      "Add diced tomatoes to the skillet and cook for 10 minutes, stirring occasionally.",
+      "Stir in heavy cream and simmer for another 10 minutes, until the sauce is thickened and the chicken is cooked through.",
+      "Season with salt to taste. Serve hot over cooked basmati rice, garnished with fresh cilantro if desired.",
+    ],
+    tags: ["curry", "Indian", "chicken", "spicy"],
+    imageURL: "https://example.com/chicken_tikka_masala.jpg",
+    vegan: false,
+    vegetarian: false,
+  },
+  {
+    recipeName: "Lemon Blueberry Muffins",
+    author: "Michael Baker",
+    authorAccountId: 4,
+    description:
+      "Deliciously moist muffins bursting with fresh blueberries and a hint of lemon.",
+    cuisine: "American",
+    difficulty: "Easy",
+    prepTime: "15 minutes",
+    cookTime: "25 minutes",
+    totalServings: 12,
+    ingredients: [
+      "2 cups all-purpose flour",
+      "1/2 cup granulated sugar",
+      "1/2 cup brown sugar",
+      "2 teaspoons baking powder",
+      "1/2 teaspoon baking soda",
+      "1/2 teaspoon salt",
+      "1 cup buttermilk",
+      "1/2 cup unsalted butter, melted",
+      "2 large eggs",
+      "1 teaspoon vanilla extract",
+      "1 tablespoon lemon zest",
+      "1 1/2 cups fresh blueberries",
+    ],
+    instructions: [
+      "Preheat the oven to 375°F (190°C). Line a muffin tin with paper liners.",
+      "In a large bowl, whisk together flour, granulated sugar, brown sugar, baking powder, baking soda, and salt.",
+      "In another bowl, whisk together buttermilk, melted butter, eggs, and vanilla extract. Add the wet ingredients to the dry ingredients and stir until just combined.",
+      "Gently fold in lemon zest and blueberries.",
+      "Divide the batter evenly among the muffin cups.",
+      "Bake for 20-25 minutes, or until a toothpick inserted into the center of a muffin comes out clean.",
+      "Allow muffins to cool in the pan for 5 minutes, then transfer to a wire rack to cool completely.",
+    ],
+    tags: ["muffins", "American", "blueberry", "lemon", "baking"],
+    imageURL: "https://example.com/lemon_blueberry_muffins.jpg",
     vegan: false,
     vegetarian: true,
   },

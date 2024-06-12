@@ -9,6 +9,15 @@ import {
   updateRecipe,
 } from '../../models/recipes.model';
 
+const handleUser = (req: Request, recipe: Recipe): boolean => {
+  const accountId = req.get('authorAccountId');
+  if (accountId && +accountId === +recipe.authorAccountId) {
+    return true
+  } else {
+    return false
+  }
+}
+
 export async function httpGetAllRecipes(
   req: Request,
   res: Response
@@ -42,8 +51,19 @@ export async function httpDeleteRecipeById(
   res: Response
 ): Promise<Response> {
   const recipeId = req.params.id
-  const recipe = await deleteRecipeById(recipeId)
-  return res.status(200).json(recipe)
+  const recipe = await getOneRecipe(recipeId)
+
+  if (!recipe) {
+    return res.status(404)
+  }
+
+  if (handleUser(req, recipe)) {
+    const deletedRecipe = await deleteRecipeById(recipeId)
+    return res.status(200).json(deletedRecipe)
+  } else {
+    console.log('Returning status code 403')
+    return res.status(403).json({ message: 'Unauthorized'})
+  }
 }
 
 export async function httpUpdateRecipe(

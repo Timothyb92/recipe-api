@@ -73,6 +73,10 @@ export const recipeSchema = new mongoose.Schema({
   _id: {
     type: Types.ObjectId,
     required: false
+  },
+  authorAccountId: {
+    type: Number,
+    required: true
   }
 })
 

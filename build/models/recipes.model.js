@@ -24,7 +24,7 @@ const getAllRecipes = () => __awaiter(void 0, void 0, void 0, function* () {
 exports.getAllRecipes = getAllRecipes;
 const getOneRecipe = (recipeId) => __awaiter(void 0, void 0, void 0, function* () {
     return yield recipes_mongo_1.recipeDB.findOne({
-        _id: recipeId
+        _id: recipeId,
     });
 });
 exports.getOneRecipe = getOneRecipe;
@@ -34,7 +34,7 @@ const addRecipe = (recipe) => __awaiter(void 0, void 0, void 0, function* () {
 exports.addRecipe = addRecipe;
 const deleteRecipeById = (recipeId) => __awaiter(void 0, void 0, void 0, function* () {
     return yield recipes_mongo_1.recipeDB.findByIdAndDelete({
-        _id: recipeId
+        _id: recipeId,
     });
 });
 exports.deleteRecipeById = deleteRecipeById;

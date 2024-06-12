@@ -84,6 +84,10 @@ exports.recipeSchema = new mongoose_1.default.Schema({
     _id: {
         type: mongoose_1.Types.ObjectId,
         required: false
+    },
+    authorAccountId: {
+        type: Number,
+        required: true
     }
 });
 exports.recipeDB = mongoose_1.default.model('Recipe', exports.recipeSchema);
