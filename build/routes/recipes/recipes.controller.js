@@ -11,6 +11,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.httpUpdateRecipe = exports.httpDeleteRecipeById = exports.httpAddRecipe = exports.httpGetOneRecipe = exports.httpGetAllRecipes = void 0;
 const recipes_model_1 = require("../../models/recipes.model");
+const handleUser = (req, recipe) => {
+    const accountId = req.get('authorAccountId');
+    if (accountId && +accountId === +recipe.authorAccountId) {
+        return true;
+    }
+    else {
+        return false;
+    }
+};
 function httpGetAllRecipes(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const recipes = yield (0, recipes_model_1.getAllRecipes)();
@@ -38,8 +47,18 @@ exports.httpAddRecipe = httpAddRecipe;
 function httpDeleteRecipeById(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const recipeId = req.params.id;
-        const recipe = yield (0, recipes_model_1.deleteRecipeById)(recipeId);
-        return res.status(200).json(recipe);
+        const recipe = yield (0, recipes_model_1.getOneRecipe)(recipeId);
+        if (!recipe) {
+            return res.status(404);
+        }
+        if (handleUser(req, recipe)) {
+            const deletedRecipe = yield (0, recipes_model_1.deleteRecipeById)(recipeId);
+            return res.status(200).json(deletedRecipe);
+        }
+        else {
+            console.log('Returning status code 403');
+            return res.status(403).json({ message: 'Unauthorized' });
+        }
     });
 }
 exports.httpDeleteRecipeById = httpDeleteRecipeById;
